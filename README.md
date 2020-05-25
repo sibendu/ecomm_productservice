@@ -1,4 +1,4 @@
-# ecomm_orderservice       
+# ecomm_productservice       
 
 Built SpringBoot
 
