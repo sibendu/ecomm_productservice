@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: productservice
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: productservice
+    spec:
+      containers:
+      - name: productservice
+        image: sibendudas/productservice
+        ports:
+        - containerPort: 8082
+          name: svc-port
+          protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: productservice
+spec:
+  clusterIP: None
+  ports:
+  - name: svc-port
+    port: 8082
+    targetPort: 8082
+  selector:
+    app: productservice
